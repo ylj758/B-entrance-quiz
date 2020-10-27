@@ -43,6 +43,14 @@ public class StudentController {
         return json;
     }
 
+    @PostMapping("/student/add")
+    @ResponseStatus(code = HttpStatus.CREATED)
+    public String addStudents(@RequestBody Student student) throws JsonProcessingException {
+        studentList.add(student);
+        String json = new ObjectMapper().writeValueAsString(studentList);
+        return json;
+    }
+
 
 
 }
