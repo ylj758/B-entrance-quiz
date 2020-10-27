@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -19,6 +20,7 @@ public class StudentController {
     }
 
     private void initStudentList() {
+        studentList = new ArrayList<>();
         studentList.add(new Student(1, "成吉思汗"));
         studentList.add(new Student(2, "鲁班七号"));
         studentList.add(new Student(3, "太乙真人"));
@@ -45,8 +47,8 @@ public class StudentController {
 
     @PostMapping("/student/add")
     @ResponseStatus(code = HttpStatus.CREATED)
-    public String addStudents(@RequestBody Student student) throws JsonProcessingException {
-        studentList.add(student);
+    public String addStudents(@RequestBody String name) throws JsonProcessingException {
+        studentList.add(new Student(studentList.size()+1,name));
         String json = new ObjectMapper().writeValueAsString(studentList);
         return json;
     }
