@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 @Data
 @Builder
+//TODO GTB-知识点: - Student.java:10 注解使用有误
 @NoArgsConstructor
 @AllArgsConstructor
 public class Student {
